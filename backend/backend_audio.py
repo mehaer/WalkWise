@@ -20,6 +20,11 @@ def detect_speech_needs_help(transcript):
     transcript = transcript.lower()
     return "help" in transcript or "emergency" in transcript or "danger" in transcript
 
+def detect_speech_needs_help_custom_word(transcript, keyword):
+    transcript = transcript.lower()
+    return keyword in transcript # Check for custom keyword
+
+
 if __name__ == "__main__":
     audio_path = r"data\Recording (3).m4a"
     transcript = transcribe_audio(audio_path)
