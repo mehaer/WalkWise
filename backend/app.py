@@ -1,21 +1,26 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
-from flask import request, session
 
 app = Flask(__name__)
 CORS(app)
 
-app.secret_key = 'supersecretkey'
+# In-memory storage for demonstration purposes
+locations = []
 
-@app.route('/gps', methods=['POST'])
-def gps():
-    data = request.get_json()
-    session['gps'] = data
-    return jsonify(message="GPS coordinates stored successfully")
-
-@app.route('/alert', methods=['GET'])
+@app.route('/alert', methods=['POST'])
 def alert():
-    return jsonify(message="successful! the authorities have been contacted")
+    data = request.get_json()
+    latitude = data.get('latitude')
+    longitude = data.get('longitude')
+    
+    # Save the location data
+    locations.append({'latitude': latitude, 'longitude': longitude})
+    
+    return jsonify(message=f"Successful! The authorities have been contacted. Location: ({latitude}, {longitude})")
+
+@app.route('/locations', methods=['GET'])
+def get_locations():
+    return jsonify(locations)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -10,19 +10,22 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo/metro-runtime": "~4.0.1",
     "expo": "~52.0.31",
     "expo-av": "^15.0.2",
+    "expo-location": "~18.0.5",
     "expo-status-bar": "~2.0.1",
     "firebase": "^11.3.0",
     "react": "18.3.1",
     "react-native": "0.76.7",
     "react-native-sensors": "^7.3.6",
-    "twilio": "^5.4.3",
     "react-native-web": "~0.19.13",
-    "@expo/metro-runtime": "~4.0.1"
+    "twilio": "^5.4.3",
+    "expo-constants": "~17.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@types/prop-types": "^15.7.14",
     "typescript": "^5.3.3"
   },
   "private": true
